@@ -62,13 +62,13 @@ public class Inventory {
             pt.setDouble(5,product.getPrice());
             pt.setDouble(4, product.getOn_hand());
 
-            ResultSet rs = pt.executeQuery("SELECT * FROM product WHERE product_id=3");
+           /* ResultSet rs = pt.executeQuery("SELECT * FROM product WHERE product_id=3");
 
             //System.out.println(rs.getString());
             while(rs.next()){
                 System.out.println(rs.getString("price"));
 
-            }
+            }*/
 
             pt.executeUpdate();
             pt.close();
@@ -83,6 +83,25 @@ public class Inventory {
     //update product
     //delete product
     //restock
+    public void addstock(int vendor_id ,int  product_id ,double quantity ){
+         try{
+             Restock restock=new Restock();
+             restock.setQuantity(quantity);
+             restock.setVendor_id(vendor_id);
+             restock.setProduct_id(product_id);
+             String query="INSERT INTO  restock(vendor_id , product_id , quantity ) VALUES(?,?,?)";
+             pt=conn.prepareStatement(query);
+             pt.setInt(1,restock.getVendor_id());
+             pt.setInt(2,restock.getProduct_id());
+             pt.setDouble(3,restock.getQuantity());
+             pt.executeUpdate();
+             pt.close();
+
+         }
+          catch (SQLException throwables) {
+             throwables.printStackTrace();
+         }
+    }
     //add customer
     public void add_customer(int customer_id, String firstname, String secondname , String location ){
         try {
@@ -141,10 +160,11 @@ public class Inventory {
     {
       Inventory inventory=new Inventory();
 
-      inventory.add_vendor("risper","al","we");
-        inventory.add_vendor("alex","aeel","wkkke");
-        inventory.add_product("geisha",3,20.5,0.5,200);
-        inventory.add_customer(123,"ris","bev","location");
+      //inventory.add_vendor("risper","al","we");
+        //inventory.add_vendor("alex","aeel","wkkke");
+        //inventory.add_product("geisha",3,20.5,0.5,200);
+        //inventory.add_customer(123,"ris","bev","location");
+        inventory.addstock(3,1,20.4);
 
     }
 }
