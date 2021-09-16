@@ -160,11 +160,11 @@ public class Inventory {
     {
       Inventory inventory=new Inventory();
 
-      //inventory.add_vendor("risper","al","we");
-        //inventory.add_vendor("alex","aeel","wkkke");
-        //inventory.add_product("geisha",3,20.5,0.5,200);
-        //inventory.add_customer(123,"ris","bev","location");
-        inventory.addstock(3,1,20.4);
+       inventory.add_vendor("risper","al","we");
+       inventory.add_vendor("alex","aeel","wkkke");
+       inventory.add_product("geisha",3,20.5,0.5,200);
+       inventory.add_customer(123,"ris","bev","location");
+       inventory.addstock(3,1,20.4);
 
     }
 }
